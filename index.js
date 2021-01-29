@@ -20,6 +20,15 @@ catch(error)
 
 }
 })
+app.get("/viewall",async(req,res)=>{
+    try{
+        var result =await bookModel.find().exec();
+        res.json(result);
+    }
+    catch(error){
+        res.status(500).send(error)
+    }
+})
 app.listen(process.env.PORT || 3000,function(){
     console.log('Your node js server is running at http://localhost:3000')
 });
